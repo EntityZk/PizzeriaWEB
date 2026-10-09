@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+.Scatola-Nera {
+  position: relative;
+  z-index: 1;
+  border: 2px solid black;
+  height: 100px;
+  margin: 50px;
+}
+
+.Scatola-Grigia {
+  position: absolute;
+  z-index: 3; 
+  background: lightgray;
+  height: 100px;  
+  width: 100px;
+  left: 150px;
+  top: 40px;
+}
+
+.Scatola-Verde {
+  position: absolute;
+  z-index: 2; 
+  background: lightgreen;
+  width: 35%;
+  left: 200px;
+  top: 15px;
+  height: 100px;
+}
+</style>
+</head>
+<body>
+
+
+<div class="contenitore">
+  <div class="Scatola-Nera">Scatola Nera</div>
+  <div class="Scatola-Grigia">Scatola Grigia</div>
+  <div class="Scatola-Verde">Scatola Verde</div>
+</div>
+
+</body>
+</html>
