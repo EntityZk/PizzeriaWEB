@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordina un dolce</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fff8ef; color: #38251d; text-align: center; margin: 0; }
+    header { background: #a92323; color: white; padding: 20px; }
+    main { max-width: 480px; margin: 30px auto; padding: 25px; background: white; border-radius: 15px; box-shadow: 0 4px 14px #0002; }
+    img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; }
+    label { display: block; margin: 18px 0 7px; text-align: left; }
+    select, input, button { width: 100%; padding: 12px; border-radius: 7px; border: 1px solid #ccc; font-size: 16px; }
+    button { background: #a92323; color: white; border: 0; margin-top: 20px; cursor: pointer; }
+    button:hover { background: #801818; }
+    a { color: #a92323; }
+    #risultato { font-weight: bold; color: #23743a; }
+  </style>
+</head>
+<body>
+  <header><h1>🍰 Ordina un dolce</h1></header>
+
+  <main>
+    <img src="dolci.jpg"
+         alt="Tortino">
+
+    <form id="ordine">
+      <label for="prodotto">Scegli il dolce:</label>
+      <select id="prodotto" required>
+        <option value="5">Tiramisù - €5,00</option>
+        <option value="4">Cheesecake - €4,00</option>
+        <option value="4">Panna cotta - €4,00</option>
+        <option value="6">Torta al cioccolato - €6,00</option>
+        <option value="3">Gelato - €3,00</option>
+      </select>
+
+      <label for="quantita">Quantità:</label>
+      <input id="quantita" type="number" min="1" max="20" value="1" required>
+
+      <p>Totale: €<span id="totale">5.00</span></p>
+      <button type="submit">Conferma ordine</button>
+    </form>
+
+    <p id="risultato"></p>
+    <p><a href="index.html">← Torna al menu principale</a></p>
+  </main>
+
+  <script>
+    const prodotto = document.getElementById('prodotto');
+    const quantita = document.getElementById('quantita');
+    const totale = document.getElementById('totale');
+    const risultato = document.getElementById('risultato');
+
+    function aggiornaTotale() {
+      totale.textContent =
+        (Number(prodotto.value) * Number(quantita.value || 0)).toFixed(2);
+    }
+
+    prodotto.addEventListener('change', aggiornaTotale);
+    quantita.addEventListener('input', aggiornaTotale);
+
+    document.getElementById('ordine').addEventListener('submit', function(e) {
+      e.preventDefault();
+      risultato.textContent =
+        'Ordine simulato! Totale: €' + totale.textContent +
+        '. Grazie per aver scelto La Bella Pizza!';
+    });
+  </script>
+</body>
+</html>
